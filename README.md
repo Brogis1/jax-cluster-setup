@@ -7,9 +7,9 @@
 
 Tested and working configuration for JAX with GPU on a cluster with NVIDIA driver 525 (CUDA 12.0 max).
 
-I made this because running JAX on a cluster with GPUs can be a huge pain. If the hardware is not up to date etc., you will get errors. They can come at imports or during runtime, so it is hard to debug. So I made this that for sure works with CUDA 12.0 and illustrates the pitfalls that even the smallest mismathces in version can fail the whole thing (e.g., it all runs but compilation takes millenea).
+Running JAX on GPU clusters can be challenging due to driver and library compatibility issues. Version mismatches often lead to cryptic errors during import or runtime, or performance regressions where JAX runs but compilation takes an excessive amount of time. This repository provides a verified configuration for CUDA 12.0 and highlights common pitfalls.
 
-The tests should pass on your environment (even if not installed with these scripts). They test differentiation through loops with eigenvolsers, basically very hard cases, they compare the outputs from CPU and GPU runs to be sure both are the same.
+The included tests verify JAX functionality by comparing CPU and GPU outputs for complex operations, such as differentiation through loops with eigensolvers. These tests ensure numerical consistency across devices, regardless of whether you used the provided installation scripts.
 
 
 ## Quick Start
