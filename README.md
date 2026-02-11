@@ -9,6 +9,8 @@ Tested and working configuration for JAX with GPU on a cluster with NVIDIA drive
 
 I made this because running JAX on a cluster with GPUs can be a huge pain. If the hardware is not up to date etc., you will get errors. They can come at imports or during runtime, so it is hard to debug. So I made this that for sure works with CUDA 12.0 and illustrates the pitfalls that even the smallest mismathces in version can fail the whole thing (e.g., it all runs but compilation takes millenea).
 
+The tests should pass on your environment (even if not installed with these scripts). They test differentiation through loops with eigenvolsers, basically very hard cases, they compare the outputs from CPU and GPU runs to be sure both are the same.
+
 
 ## Quick Start
 
@@ -128,6 +130,7 @@ JAX 0.4.30+ switched to a plugin architecture that bundles nvidia-* pip packages
 | `config.sh` | All cluster-specific paths and versions -- **edit this for your cluster** |
 | `install.sh` | One-time: creates venv, installs JAX, disables bad ptxas, installs test deps |
 | `activate.sh` | Source each session: sets CUDA_HOME, XLA_FLAGS, PATH, LD_LIBRARY_PATH |
+| `activate_jax.sh` | Source each session: sets CUDA_HOME, XLA_FLAGS, PATH, LD_LIBRARY_PATH in an existing environment |
 | `diagnose.sh` | Troubleshooting: checks GPU, ptxas, env vars, libraries, JAX |
 | `tests/` | pytest test suite (device, basic ops, stress compilation, CPU/GPU consistency) |
 
